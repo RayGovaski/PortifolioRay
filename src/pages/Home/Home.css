@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Geist Mono', monospace;
+  overflow-x: hidden;
+  overflow-y: hidden; /* Previne scroll vertical desnecessário */
+}
+
+.home-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.home-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text image";
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 4rem;
+  padding: 0 10rem;
+}
+
+.home-text {
+  grid-area: text;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  gap: 0.5rem;
+  justify-self: start;
+  align-self: center;
+  width: 100%;
+}
+
+.home-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0F0F0F;
+}
+
+.home-subtitle {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0F0F0F;
+}
+
+.home-role {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: #454545;
+  line-height: 1.2;
+  min-height: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.home-highlight {
+  color: #57534e;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icon {
+  color: #000;
+  transition: color 0.2s ease;
+}
+
+.social-icon:hover {
+  color: #57534e;
+}
+
+.image-container {
+  grid-area: image;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.character-image {
+  width: 400px;
+  height: auto;
+  object-fit: contain;
+  max-height: 80vh; /* Limita a altura máxima */
+}
+
+@media (max-width: 1024px) {
+  .home-container {
+    padding: 1.5rem;
+  }
+  
+  .character-image {
+    max-width: 350px;
+    max-height: 70vh;
+  }
+}
+
+@media (max-width: 768px) {
+  body, html {
+    overflow-y: auto; /* Permite scroll apenas no mobile se necessário */
+  }
+  
+  .home-container {
+    padding: 1rem;
+    height: auto; /* Permite altura automática no mobile */
+    min-height: 100vh;
+  }
+  
+  .home-content {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "image"
+      "text";
+    gap: 2rem;
+    justify-items: center;
+    height: auto; /* Altura automática no mobile */
+    padding: 0;
+  }
+  
+  .home-text {
+    justify-self: center;
+    text-align: center;
+  }
+  
+  .character-image {
+    max-width: 280px;
+    max-height: 60vh;
+  }
+  
+  .social-icons {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 0.5rem;
+  }
+  
+  .character-image {
+    max-width: 250px;
+    max-height: 50vh;
+  }
+  
+  .social-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 1160px) {
+  .character-image {
+    max-width: 350px;
+  }
+  
+  .home-title,
+  .home-subtitle,
+  .home-role {
+    font-size: 2.5rem;
+  }
+  
+  .social-icon svg {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .home-content {
+    padding: 0 8rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .character-image {
+    max-width: 340px;
+  }
+  
+  .home-title,
+  .home-subtitle,
+  .home-role {
+    font-size: 2rem;
+  }
+  
+  .social-icon svg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 958px) {
+  .home-content {
+    padding: 0 5rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .home-content {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 796px) {
+  .home-content {
+    padding: 0 2rem;
+  }
+  
+  .social-icon svg {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-content {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .character-image {
+    max-width: 250px;
+    max-height: 60vh;
+  }
+}

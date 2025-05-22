@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&display=swap');
+
+.navbar {
+  background-color: #000000;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Geist Mono', monospace;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.navbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 15px;
+  height: 100%;
+  transition: all 0.2s ease;
+  color: #9ca3af;
+  padding: 0 10px;
+}
+
+.navbar-item:hover {
+  color: #e5e7eb;
+}
+
+.navbar-item.active {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.navbar-icon {
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 50px;
+  }
+  
+  .navbar-container {
+    justify-content: space-around;
+    padding: 0 10px;
+  }
+  
+  .navbar-item {
+    margin: 0 5px;
+  }
+  
+  .navbar-label {
+    font-size: 10px;
+  }
+}
