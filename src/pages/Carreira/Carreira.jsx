@@ -1,8 +1,7 @@
 import React from 'react';
-import { FiBriefcase, FiBookOpen, FiTarget, FiAward, FiGlobe, FiSettings } from 'react-icons/fi';
-import './Carreira.css';
+import { FiBriefcase, FiBookOpen, FiTarget, FiAward, FiGlobe, FiSettings, FiDownload } from 'react-icons/fi';
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
-
+import './Carreira.css';
 
 
 const resumo = "Sou estudante de Sistemas de Informação, atualmente cursando o 5º período na PUCPR. Além disso, atuo como diretor de mídias sociais do Centro Acadêmico do meu curso, onde desenvolvo habilidades em gestão de comunicação, organização, trabalho em equipe e design de produtos.\n\nMinha trajetória profissional inclui experiência como designer gráfico em uma gráfica, onde aprimorei minhas habilidades em criação visual, utilizando Photoshop e CorelDRAW, design de materiais, atendimento ao público e gerenciamento de pedidos. Com o tempo, meu interesse por tecnologia cresceu, especialmente por sempre ter sido apaixonado por jogos. Foi assim que descobri a área de desenvolvimento de software, que hoje é o meu foco, tanto no front-end quanto no back-end.\n\nTenho experiência em desenvolvimento web completo, utilizando React, Bootstrap, HTML, CSS e JavaScript. Em projetos universitários, costumo assumir a responsabilidade pelo desenvolvimento front-end e também tenho familiaridade com outras tecnologias para tornar as soluções mais completas e eficientes.";
@@ -48,19 +47,25 @@ const experiencia = [
 ];
 
 export default function Carreira() {
+  const downloadPDF = () => {
+    const link = document.createElement('a');
+    link.href = '/public/curriculo.pdf';
+    link.download = 'Curriculo.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    
     <PageWrapper>
       <>
        <div className="curriculo-container">
-        {/* Botão PDF */}
         <div className="pdf-button-container">
-          <button className="custom-btn">
+          <button className="custom-btn" onClick={downloadPDF}>
             Ver currículo em PDF
           </button>
         </div>
 
-        {/* Resumo */}
         <div className="section">
           <h2 className="section-title">
             <FiBookOpen size={24} /> Resumo
@@ -68,7 +73,6 @@ export default function Carreira() {
           <p className="section-content">{resumo}</p>
         </div>
 
-        {/* Objetivo */}
         <div className="section">
           <h2 className="section-title">
             <FiTarget size={24} /> Objetivo
@@ -76,7 +80,6 @@ export default function Carreira() {
           <p className="section-content">{objetivo}</p>
         </div>
 
-        {/* Educação */}
         <div className="section">
           <h2 className="section-title">
             <FiAward size={24} /> Educação
@@ -86,7 +89,6 @@ export default function Carreira() {
           </ul>
         </div>
 
-        {/* Idiomas */}
         <div className="section">
           <h2 className="section-title">
             <FiGlobe size={24} /> Idiomas
@@ -96,7 +98,6 @@ export default function Carreira() {
           </ul>
         </div>
 
-        {/* Habilidades */}
         <div className="section">
           <h2 className="section-title">
             <FiSettings size={24} /> Habilidades e Competências
@@ -106,7 +107,6 @@ export default function Carreira() {
           </ul>
         </div>
 
-        {/* Experiência */}
         <div className="section">
           <h2 className="section-title">
             <FiBriefcase size={24} /> Experiência
@@ -125,6 +125,5 @@ export default function Carreira() {
       </div>
       </>
     </PageWrapper>
-    
   );
 }

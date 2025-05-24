@@ -1,15 +1,11 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import './Home.css';
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
 
-
-
-
 const Home = () => {
   const characterImg = "src/assets/Boneco.png";
   
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const roles = ["Front-end", "Back-end", "Web"];
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
@@ -55,7 +51,7 @@ const Home = () => {
       <div className="home-content">
         <div className="home-text">
           <h1 className="home-title">
-            Olá, Sou o <span className="home-highlight">Ray</span>
+            Olá, Bem-vindo! Sou o <span className="home-highlight">Ray</span>
           </h1>
           <h2 className="home-subtitle">Desenvolvedor</h2>
           <h3 className="home-role">
@@ -69,6 +65,9 @@ const Home = () => {
             </a>
             <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="social-icon">
               <FaLinkedin size={60} />
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <FaWhatsapp size={60} />
             </a>
           </div>
         </div>

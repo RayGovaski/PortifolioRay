@@ -17,14 +17,14 @@ const Sobre = () => {
           </div>
           
           <div className="text-wrapper">
-            <h1 className="sobre-title">Sobre mim</h1>
+            <h1 className="sobre-title h22">Sobre mim</h1>
 
             <p>
-              Sou estudante de Sistemas de Informação na PUCPR, entrei nessa área
+              Sou estudante de Sistemas de Informação na PUCPR, entrei para essa área
               pois desde criança, sempre fui curioso sobre como as coisas
               funcionam especialmente quando se tratava de jogos. Esse interesse
-              foi o ponto de partida para minha jornada na tecnologia, que hoje
-              é parte do meu propósito profissional.
+              foi o ponto de partida para meu começo na área de tecnologia, que hoje
+              é parte do meu objetivo profissional.
             </p>
 
             <p>

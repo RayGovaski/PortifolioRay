@@ -10,7 +10,7 @@ body, html {
   height: 100%;
   font-family: 'Geist Mono', monospace;
   overflow-x: hidden;
-  overflow-y: hidden; /* Previne scroll vertical desnecessário */
+  overflow-y: hidden;
 }
 
 .home-container {
@@ -114,7 +114,7 @@ body, html {
   width: 400px;
   height: auto;
   object-fit: contain;
-  max-height: 80vh; /* Limita a altura máxima */
+  max-height: 80vh;
 }
 
 @media (max-width: 1024px) {
@@ -130,12 +130,12 @@ body, html {
 
 @media (max-width: 768px) {
   body, html {
-    overflow-y: auto; /* Permite scroll apenas no mobile se necessário */
+    overflow-y: auto;
   }
   
   .home-container {
     padding: 1rem;
-    height: auto; /* Permite altura automática no mobile */
+    height: auto;
     min-height: 100vh;
   }
   
@@ -146,7 +146,7 @@ body, html {
       "text";
     gap: 2rem;
     justify-items: center;
-    height: auto; /* Altura automática no mobile */
+    height: auto;
     padding: 0;
   }
   

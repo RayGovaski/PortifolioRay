@@ -14,7 +14,6 @@ const Navbar = () => {
     { id: 'sobre', path: '/sobre', label: 'Sobre', icon: <BsFileEarmarkText size={18} /> },
     { id: 'carreira', path: '/carreira', label: 'Carreira', icon: <MdWork size={18} /> },
     { id: 'projetos', path: '/projetos', label: 'Projetos', icon: <BsLaptop size={18} /> },
-    { id: 'contato', path: '/contato', label: 'Contato', icon: <RiContactsLine size={18} /> },
   ];
 
   return (
