@@ -4,6 +4,7 @@ import ProjectCard from '../../components/ProjectCard';
 import CertificateCard from '../../components/CertificateCard';
 import StackIcon from '../../components/StackIcon';
 import TabButton from '../../components/TabButton';
+import PageWrapper from "../../Components/PageWrapper/PageWrapper";
 
 import './ProjetosPage.css';
 import '../../components/TabButton.css';
@@ -15,7 +16,7 @@ import projectImg1 from '../../assets/project-images/project1.jpg';
 import certImg1 from '../../assets/certificates/certificate1.jpg';
 
 const Projetos = () => {
-  const [activeTab, setActiveTab] = useState(0); 
+  const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (index, tabName) => {
     setActiveTab(index);
@@ -49,7 +50,6 @@ const Projetos = () => {
     },
   ];
 
-
   const certificatesData = [
     {
       id: 1,
@@ -78,21 +78,21 @@ const Projetos = () => {
   ];
 
   const stacksData = [
-  { id: 1, name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  { id: 2, name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { id: 3, name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-  { id: 4, name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-  { id: 5, name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-  { id: 6, name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg' },
-  { id: 7, name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-  { id: 8, name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-  { id: 9, name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
-  { id: 10, name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
-  { id: 11, name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' }, // 
-  { id: 12, name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' }, 
-  { id: 12, name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' }, 
-  { id: 14, name: 'Photoshop', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg' },
-];
+    { id: 1, name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    { id: 2, name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { id: 3, name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+    { id: 4, name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+    { id: 5, name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+    { id: 6, name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg' },
+    { id: 7, name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { id: 8, name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+    { id: 9, name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+    { id: 10, name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
+    { id: 11, name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+    { id: 12, name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+    { id: 13, name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+    { id: 14, name: 'Photoshop', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg' },
+  ];
 
   const renderContent = () => {
     switch (activeTab) {
@@ -111,7 +111,7 @@ const Projetos = () => {
             ))}
           </div>
         );
-      
+     
       case 1: // Certificados
         return (
           <div className="content-section">
@@ -125,7 +125,7 @@ const Projetos = () => {
             ))}
           </div>
         );
-      
+     
       case 2: // Stacks
         return (
           <div className="content-section">
@@ -138,27 +138,26 @@ const Projetos = () => {
             ))}
           </div>
         );
-      
+     
       default:
         return null;
     }
   };
 
   return (
-
     <div className="projetos-page-container">
       <h2 className="projetos-title">
-          Projetos 
-          <FolderOpen 
-            size={25} 
-            color="#000" 
-            style={{ 
-              marginLeft: '12px', 
-              transform: 'translateY(3px)',
-              display: 'inline-block'
-            }} 
-          />
-        </h2>
+        Projetos
+        <FolderOpen
+          size={25}
+          color="#000"
+          style={{
+            marginLeft: '12px',
+            transform: 'translateY(3px)',
+            display: 'inline-block'
+          }}
+        />
+      </h2>
 
       <div className="tab-button-section">
         <TabButton
@@ -169,7 +168,10 @@ const Projetos = () => {
         />
       </div>
 
-      {renderContent()}
+      {/* AQUI É ONDE VOCÊ COLOCA O PAGEWRAPPER */}
+      <PageWrapper key={activeTab}>
+        {renderContent()}
+      </PageWrapper>
     </div>
   );
 };
