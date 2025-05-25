@@ -42,9 +42,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem; 
+  gap: 2rem;
   padding: 2rem 0;
   animation: fadeInUp 1s ease-out;
+  /* GARANTE QUE TODOS OS CARDS TENHAM A MESMA ALTURA */
   align-items: stretch;
 }
 
@@ -63,16 +64,30 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.content-section .project-card-wrapper,
-.content-section .certificate-card-wrapper { 
-  flex: 0 1 calc(33.333% - 2rem); 
-  max-width: calc(33.333% - 2rem); 
-  min-width: 300px; 
+/* GARANTE QUE OS CARDS MANTENHAM PROPORÇÃO CONSISTENTE */
+.content-section .project-card-wrapper, 
+.content-section .certificate-card-wrapper {
+  flex: 0 1 calc(33.333% - 2rem);
+  max-width: calc(33.333% - 2rem);
+  min-width: 300px;
+  /* GARANTE QUE TODOS OS WRAPPERS TENHAM A MESMA ALTURA */
+  display: flex;
+  flex-direction: column;
+}
+
+/* PARA CARDS DIRETOS (SEM WRAPPER) */
+.content-section > .modern-project-card,
+.content-section > .modern-certificate-card {
+  flex: 0 1 calc(33.333% - 2rem);
+  max-width: calc(33.333% - 2rem);
+  min-width: 300px;
 }
 
 @media (min-width: 1201px) {
   .content-section .project-card-wrapper,
-  .content-section .certificate-card-wrapper {
+  .content-section .certificate-card-wrapper,
+  .content-section > .modern-project-card,
+  .content-section > .modern-certificate-card {
     flex: 0 1 calc(33.333% - 2rem);
     max-width: calc(33.333% - 2rem);
   }
@@ -80,7 +95,10 @@
 
 @media (min-width: 769px) and (max-width: 1200px) {
   .content-section .project-card-wrapper,
-  .content-section .certificate-{
+  .content-section .certificate-card-wrapper,
+  .content-section > .modern-project-card,
+  .content-section > .modern-certificate-card {
+    flex: 0 1 calc(50% - 1rem);
     max-width: calc(50% - 1rem);
   }
 }
@@ -95,15 +113,17 @@
   }
 
   .content-section .project-card-wrapper,
-  .content-section .certificate-card-wrapper {
-    flex: 0 1 100%; 
+  .content-section .certificate-card-wrapper,
+  .content-section > .modern-project-card,
+  .content-section > .modern-certificate-card {
+    flex: 0 1 100%;
     max-width: 100%;
   }
 
   .projetos-title {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    margin-left: 1rem; 
+    margin-left: 1rem;
   }
 
   .tab-button-section {
@@ -131,11 +151,11 @@
 
 .content-section:has(.stack-icon) {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1.5rem;
   max-width: 1200px;
-  margin: 2rem auto; 
-  align-items: center; 
+  margin: 2rem auto;
+  align-items: center;
   justify-items: center;
   flex-wrap: unset;
   justify-content: unset;
@@ -160,7 +180,6 @@
   z-index: -1;
 }
 
-
 .content-section.loading {
   opacity: 0.5;
   pointer-events: none;
@@ -172,10 +191,8 @@
   transition: opacity 0.3s ease;
 }
 
-  @media (max-width: 1378px) {
-    .projetos-title {
-      margin-left: 2rem;
-    }
+@media (max-width: 1378px) {
+  .projetos-title {
+    margin-left: 2rem;
+  }
 }
-
-

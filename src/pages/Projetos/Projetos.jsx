@@ -48,6 +48,14 @@ const Projetos = () => {
       projectLink: 'https://seusite.com/receitas',
       repoLink: 'https://github.com/seuuser/receitas-repo',
     },
+    {
+      id: 3,
+      title: 'Plataforma de Receitas',
+      description: 'Aplicação web para gerenciar e compartilhar receitas culinárias, com busca e favoritos.',
+      imageUrl: projectImg1,
+      projectLink: 'https://seusite.com/receitas',
+      repoLink: 'https://github.com/seuuser/receitas-repo',
+    },
   ];
 
   const certificatesData = [
