@@ -6,7 +6,7 @@ const slideVariants = {
   initial: { 
     x: '100%', 
     opacity: 0,
-    scale: 0.8,
+    scale: 0.5,
     z: -100
   },
   animate: { 

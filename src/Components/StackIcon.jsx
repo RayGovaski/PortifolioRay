@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
+
 const StackIcon = ({ name, iconUrl }) => {
   return (
     <div className="stack-icon-wrapper">

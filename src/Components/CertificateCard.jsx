@@ -3,6 +3,8 @@ import './CertificateCard.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import RevealWrapper from './RevealWrapper'; // ajuste o path se necessário
+import Cortina from '../components/Cortina'; // Ajuste o caminho se necessário
+
 
 const CertificateCard = ({ title, imageUrl, certificateLink }) => {
   const handleClick = () => {
@@ -12,7 +14,7 @@ const CertificateCard = ({ title, imageUrl, certificateLink }) => {
   };
 
   return (
-    <RevealWrapper>
+  <Cortina>
       <div className="certificate-card-wrapper">
       <div 
         className={`certificate-card ${certificateLink ? 'clickable' : ''}`}
@@ -44,7 +46,8 @@ const CertificateCard = ({ title, imageUrl, certificateLink }) => {
         </div>
       </div>
     </div>
-    </RevealWrapper>
+  </Cortina>
+    
     
   );
 };
