@@ -1,6 +1,13 @@
 .reveal-wrapper {
   position: relative;
   overflow: hidden;
+  border-radius: 0.7rem;
+
+}
+
+.reveal-wrapper:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  border-color: #666666;
 }
 
 .reveal-cover {

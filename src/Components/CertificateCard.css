@@ -1,64 +1,277 @@
+/* CertificateCard.css */
 .certificate-card-wrapper {
-  width: calc(33.333% - 1rem);
-  margin-bottom: 1.5rem;
+  display: contents;
 }
 
 .certificate-card {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(56, 56, 56, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* Grid interno para layout */
+  display: grid;
+  grid-template-rows: 120px 1fr;
+  gap: 0.8rem;
+  
+  /* Formato retangular mais largo */
+  width: 300px;
+  height: 200px;
+  
+  /* Visual */
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  padding: 1rem;
-  border: solid 1px #939393;
+  border: 1px solid #939393;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  
+  /* Sombra e transições */
+  box-shadow: 0 4px 16px rgba(56, 56, 56, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Padding reduzido para formato retangular */
+  padding: 0.8rem;
+  
+  /* Centraliza o card */
+  justify-self: center;
+  align-self: start;
+}
+
+.certificate-card.clickable {
+  cursor: pointer;
 }
 
 .certificate-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-color: #666;
+}
+
+.certificate-card.clickable:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.certificate-card:focus {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* Container da imagem - altura reduzida */
+.certificate-image-container {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .certificate-image {
   max-width: 100%;
-  max-height: 150px;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* Container do conteúdo compacto */
+.certificate-content {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 0.3rem;
+  justify-items: center;
+  text-align: center;
+  align-content: center;
 }
 
 .certificate-title {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #000000;
-  text-align: center;
-  text-decoration: none;
-}
-
-.certificate-title:hover {
-  color: #424242;
-}
-
-.certificate-text {
   font-size: 0.85rem;
-  color: #666;
-  text-align: center;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+  /* Limita o texto a 2 linhas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
 }
 
+.certificate-link-indicator {
+  font-size: 0.65rem;
+  color: #666;
+  font-style: italic;
+  opacity: 0.8;
+  white-space: nowrap;
+}
 
-@media (max-width: 992px) {
-  .certificate-card-wrapper {
-    width: calc(50% - 0.75rem);
+.certificate-card.clickable:hover .certificate-title {
+  color: #000000;
+}
+
+.certificate-card.clickable:hover .certificate-link-indicator {
+  color: #000000;
+  opacity: 1;
+}
+
+/* Responsividade: 4 -> 3 -> 2 -> 1 por linha */
+
+/* Desktop - 4 por linha */
+@media (min-width: 1201px) {
+  .certificate-card {
+    width: 280px;
+    height: 180px;
+  }
+  
+  .certificate-title {
+    font-size: 0.8rem;
+  }
+  
+  .certificate-link-indicator {
+    font-size: 0.6rem;
   }
 }
 
-@media (max-width: 576px) {
-  .certificate-card-wrapper {
-    width: 100%; 
+/* Laptop - 3 por linha */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .certificate-card {
+    width: 300px;
+    height: 190px;
+  }
+  
+  .certificate-title {
+    font-size: 0.85rem;
+  }
+  
+  .certificate-link-indicator {
+    font-size: 0.65rem;
+  }
+}
+
+/* Tablet - 2 por linha */
+@media (min-width: 601px) and (max-width: 900px) {
+  .certificate-card {
+    width: 340px;
+    height: 200px;
+    grid-template-rows: 130px 1fr;
+  }
+  
+  .certificate-title {
+    font-size: 0.9rem;
+  }
+  
+  .certificate-link-indicator {
+    font-size: 0.7rem;
+  }
+}
+
+/* Mobile - 1 por linha */
+@media (max-width: 600px) {
+  .certificate-card {
+    width: 320px;
+    height: 200px;
+    grid-template-rows: 130px 1fr;
+  }
+  
+  .certificate-title {
+    font-size: 0.9rem;
+  }
+  
+  .certificate-link-indicator {
+    font-size: 0.7rem;
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 400px) {
+  .certificate-card {
+    width: 280px;
+    height: 180px;
+    grid-template-rows: 120px 1fr;
+  }
+  
+  .certificate-title {
+    font-size: 0.8rem;
+  }
+  
+  .certificate-link-indicator {
+    font-size: 0.65rem;
+  }
+}
+
+/* Estados de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .certificate-card {
+    transition: none;
+  }
+}
+
+/* Modo escuro */
+@media (prefers-color-scheme: dark) {
+  .certificate-card {
+    background: rgba(255, 255, 255, 0.15);
+      border: solid 1px #939393;
+
+
+  }
+  
+  .certificate-title {
+    color: #000000;
+  }
+  
+  .certificate-link-indicator {
+    color: #1f1f1f;
+  }
+  
+  .certificate-card.clickable:hover .certificate-title,
+  .certificate-card.clickable:hover .certificate-link-indicator {
+    color: #000000;
+  }
+}
+
+/* Adicione ou substitua no seu CSS da página */
+
+/* Para Certificate Cards - 4 por linha com responsividade */
+.content-section:has(.certificate-card) {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  justify-items: center;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Desktop - 4 por linha */
+@media (min-width: 1201px) {
+  .content-section:has(.certificate-card) {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* Laptop - 3 por linha */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .content-section:has(.certificate-card) {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+/* Tablet - 2 por linha */
+@media (min-width: 601px) and (max-width: 900px) {
+  .content-section:has(.certificate-card) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 720px;
+    margin: 0 auto;
+    gap: 1.2rem;
+  }
+}
+
+/* Mobile - 1 por linha */
+@media (max-width: 600px) {
+  .content-section:has(.certificate-card) {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    margin: 0 auto;
+    gap: 1rem;
   }
 }
