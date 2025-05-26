@@ -11,7 +11,6 @@ import projectImg1 from '../../assets/certificates/certificate1.jpg';
 
 import certImg1 from '../../assets/certificates/certificate1.jpg';
 
-import './ProjetosPage.css';
 import './Button.css';
 
 const Projetos = () => {
