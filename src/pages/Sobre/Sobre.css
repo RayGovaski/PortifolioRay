@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
-
 * {
   margin: 0;
   padding: 0;
@@ -28,6 +27,7 @@ body {
   padding-left: 5rem;
   padding-right: 5rem;
   align-items: center;
+  margin-top: 80px;
 }
 
 .img-wrapper {

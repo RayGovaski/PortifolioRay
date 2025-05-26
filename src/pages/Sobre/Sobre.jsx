@@ -20,7 +20,7 @@ const Sobre = () => {
             <h1 className="sobre-title h22">Sobre mim</h1>
 
             <p>
-              Sou estudante de Sistemas de Informação na PUCPR, entrei para essa área
+              Me chamo Ray, Tenho 20 anos, moro em curitiba-PR, sou estudante de Sistemas de Informação na PUCPR, entrei para essa área
               pois desde criança, sempre fui curioso sobre como as coisas
               funcionam especialmente quando se tratava de jogos. Esse interesse
               foi o ponto de partida para meu começo na área de tecnologia, que hoje

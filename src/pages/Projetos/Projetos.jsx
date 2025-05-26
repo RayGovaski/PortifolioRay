@@ -1,27 +1,29 @@
+// ProjetosPage.jsx
 import React, { useState } from 'react';
 import { FolderOpen } from 'lucide-react';
-import ProjectCard from '../../components/ProjectCard';
-import CertificateCard from '../../components/CertificateCard';
-import StackIcon from '../../components/StackIcon';
 import TabButton from '../../components/TabButton';
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
+import ProjectCard from '../../components/ProjectCard';
+import CertificateCard from '../../components/CertificateCard';
+import StackIcon from '../../Components/StackIcon';
 
-import './ProjetosPage.css';
-import '../../components/TabButton.css';
-import '../../components/ProjectCard.css';
-import '../../components/CertificateCard.css';
-import '../../components/StackIcon.css';
+import projectImg1 from '../../assets/certificates/certificate1.jpg';
 
-import projectImg1 from '../../assets/project-images/project1.jpg';
 import certImg1 from '../../assets/certificates/certificate1.jpg';
 
-const Projetos = () => {
-  const [activeTab, setActiveTab] = useState(0);
+import './ProjetosPage.css';
+import './Button.css';
 
-  const handleTabChange = (index, tabName) => {
-    setActiveTab(index);
-    console.log(`Aba ativa: ${tabName}`);
+const Projetos = () => {
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+
+  const handleTabChange = (index) => {
+    setActiveTabIndex(index);
   };
+
+  const pageTitle = "Meus Projetos";
+
+  const tabItems = ['Projetos', 'Certificados', 'Stacks'];
 
   const projectsData = [
     {
@@ -42,26 +44,26 @@ const Projetos = () => {
     },
     {
       id: 3,
-      title: 'Plataforma de Receitas',
-      description: 'Aplicação web para gerenciar e compartilhar receitas culinárias, com busca e favoritos.',
+      title: 'Dashboard Analytics',
+      description: 'Dashboard interativo para visualização de dados com gráficos e relatórios em tempo real.',
       imageUrl: projectImg1,
-      projectLink: 'https://seusite.com/receitas',
-      repoLink: 'https://github.com/seuuser/receitas-repo',
+      projectLink: 'https://seusite.com/dashboard',
+      repoLink: 'https://github.com/seuuser/dashboard-repo',
     },
     {
-      id: 3,
-      title: 'Plataforma de Receitas',
-      description: 'Aplicação web para gerenciar e compartilhar receitas culinárias, com busca e favoritos.',
+      id: 4,
+      title: 'Sistema de Gestão',
+      description: 'Sistema completo de gestão empresarial com módulos de vendas, estoque e relatórios.',
       imageUrl: projectImg1,
-      projectLink: 'https://seusite.com/receitas',
-      repoLink: 'https://github.com/seuuser/receitas-repo',
+      projectLink: 'https://seusite.com/gestao',
+      repoLink: 'https://github.com/seuuser/gestao-repo',
     },
   ];
 
   const certificatesData = [
     {
       id: 1,
-      title: 'React - Alura',
+      title: 'React Avançado - Alura',
       imageUrl: certImg1,
       certificateLink: 'https://cursos.alura.com.br/certificate/seu-react-cert',
     },
@@ -79,9 +81,9 @@ const Projetos = () => {
     },
     {
       id: 4,
-      title: 'Bootstrap 5',
+      title: 'Bootstrap 5 - Desenvolve',
       imageUrl: certImg1,
-      certificateLink: null,
+      certificateLink: 'https://cursos.alura.com.br/certificate/seu-htmlcss-cert',
     },
   ];
 
@@ -102,84 +104,106 @@ const Projetos = () => {
     { id: 14, name: 'Photoshop', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg' },
   ];
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 0: // Projetos
+  const renderTabContent = () => {
+    switch (activeTabIndex) {
+      case 0:
         return (
           <div className="content-section">
-            {projectsData.map(project => (
-              <ProjectCard
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                imageUrl={project.imageUrl}
-                projectLink={project.projectLink}
-                repoLink={project.repoLink}
-              />
-            ))}
+            <PageWrapper key="page-wrapper-projetos">
+              {projectsData.map(project => (
+                <ProjectCard
+                  key={project.id}
+                  imageUrl={project.imageUrl}
+                  title={project.title}
+                  description={project.description}
+                  onViewMore={() => {
+                    if (project.projectLink) {
+                      window.open(project.projectLink, '_blank', 'noopener,noreferrer');
+                    } else {
+                      alert(`Ver mais detalhes do projeto: ${project.title}`);
+                    }
+                  }}
+                />
+              ))}
+            </PageWrapper>
           </div>
         );
-     
-      case 1: // Certificados
+
+      case 1:
         return (
           <div className="content-section">
-            {certificatesData.map(cert => (
-              <CertificateCard
-                key={cert.id}
-                title={cert.title}
-                imageUrl={cert.imageUrl}
-                certificateLink={cert.certificateLink}
-              />
-            ))}
+            <PageWrapper key="page-wrapper-certificados">
+              <div className="certificates-container" style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                gap: '16px',
+                padding: '0 20px',
+                justifyItems: 'center'
+              }}>
+                {certificatesData.map(cert => (
+                  <CertificateCard
+                    key={cert.id}
+                    imageUrl={cert.imageUrl}
+                    certificateName={cert.title}
+                    description={cert.certificateLink ? 'Certificado verificado' : 'Certificado concluído'}
+                    altText={`Certificado ${cert.title}`}
+                    certificateLink={cert.certificateLink}
+                  />
+                ))}
+              </div>
+            </PageWrapper>
           </div>
         );
-     
-      case 2: // Stacks
+
+      case 2:
         return (
           <div className="content-section">
-            {stacksData.map(stack => (
-              <StackIcon
-                key={stack.id}
-                name={stack.name}
-                iconUrl={stack.icon}
-              />
-            ))}
+            <PageWrapper key="page-wrapper-stacks">
+              <div className="stacks-container" style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                alignItems: 'flex-start',
+                gap: '8px',
+                padding: '20px',
+                maxWidth: '800px',
+                margin: '0 auto'
+              }}>
+                {stacksData.map(stack => (
+                  <StackIcon
+                    key={stack.id}
+                    iconUrl={stack.icon}
+                    techName={stack.name}
+                    altText={`${stack.name} logo`}
+                  />
+                ))}
+              </div>
+            </PageWrapper>
           </div>
         );
-     
+
       default:
         return null;
     }
   };
 
   return (
-    <div className="projetos-page-container">
-      <h2 className="projetos-title">
-        Projetos
-        <FolderOpen
-          size={25}
-          color="#000"
-          style={{
-            marginLeft: '12px',
-            transform: 'translateY(3px)',
-            display: 'inline-block'
-          }}
-        />
-      </h2>
+    <div>
+      <p className='Button-tamanho'>
+        {pageTitle}
+        {' '}
+        <FolderOpen size={25} style={{ marginRight: '10px', verticalAlign: 'middle' }} />
+      </p>
 
-      <div className="tab-button-section">
-        <TabButton
-          tabs={['Projetos', 'Certificados', 'Staks']}
-          onTabChange={handleTabChange}
-          defaultTab={0}
-          theme="blue"
-        />
+      <TabButton
+        tabs={tabItems}
+        onTabChange={handleTabChange}
+        defaultTab={0}
+      />
+
+      <div className="tab-content-display" style={{ marginTop: '30px' }}>
+        {renderTabContent()}
       </div>
-
-      {/* AQUI É ONDE VOCÊ COLOCA O PAGEWRAPPER */}
-      <PageWrapper key={activeTab}>
-        {renderContent()}
-      </PageWrapper>
     </div>
   );
 };

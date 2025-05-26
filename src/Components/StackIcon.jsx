@@ -1,23 +1,30 @@
-import './StackIcon.css';
 import React from 'react';
-import PropTypes from 'prop-types';
+import './StackIcon.css';
+import Cortina from './Cortina';
 
-
-
-const StackIcon = ({ name, iconUrl }) => {
+const StackIcon = ({ 
+  iconUrl, 
+  techName, 
+  altText 
+}) => {
   return (
-    <div className="stack-icon-wrapper">
-      <div className="stack-icon-item">
-        <img src={iconUrl} alt={name} className="stack-icon-image" />
-        <small className="stack-icon-name">{name}</small>
-      </div>
-    </div>
+    <Cortina>
+      <div className="stack-icon">
+            <div className="stack-icon-image-container">
+              <img 
+                src={iconUrl}
+                alt={altText || techName || 'Tecnologia'}
+                className="stack-icon-image"
+              />
+            </div>
+            
+            {techName && (
+              <span className="stack-icon-name">{techName}</span>
+            )}
+          </div>
+    </Cortina>
+    
   );
-};
-
-StackIcon.propTypes = {
-  name: PropTypes.string.isRequired,
-  iconUrl: PropTypes.string.isRequired,
 };
 
 export default StackIcon;

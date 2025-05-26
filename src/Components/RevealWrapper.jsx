@@ -1,23 +1,17 @@
-// src/components/RevealWrapper.jsx
 import React, { useEffect } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, useAnimation } from 'framer-motion';
-// Não precisamos mais do useInView para este comportamento
-// import { useInView } from 'react-intersection-observer';
-import './RevealWrapper.css'; // Mantenha seu CSS
+import './RevealWrapper.css';
 
-// Duração da animação de entrada que você quer considerar antes da capa sumir (pode ser 0 se não houver)
-const INITIAL_PAGE_LOAD_DELAY = 0.1; // Exemplo: pequeno delay para a página "assentar"
-// Duração que a capa deve permanecer visível cobrindo o conteúdo APÓS o delay inicial
+const INITIAL_PAGE_LOAD_DELAY = 0.1;
 const COVER_HOLD_DURATION = 2.0;
 
 const RevealWrapper = ({ children }) => {
   const controls = useAnimation();
 
   useEffect(() => {
-    // Inicia a animação para 'visible' assim que o componente é montado.
-    // Todas as instâncias de RevealWrapper farão isso simultaneamente.
     controls.start("visible");
-  }, [controls]); // Executa apenas uma vez após a montagem inicial
+  }, [controls]);
 
   const wrapperVariants = {
     hidden: {},
@@ -25,13 +19,12 @@ const RevealWrapper = ({ children }) => {
   };
 
   const coverVariants = {
-    hidden: { x: "0%" }, // Estado inicial: capa cobrindo o conteúdo
+    hidden: { x: "0%" }, 
     visible: {
-      x: "100%",       // Estado final: capa desliza para fora, revelando o conteúdo
+      x: "100%",       
       transition: {
-        // O delay total para a capa começar a deslizar:
         delay: INITIAL_PAGE_LOAD_DELAY + COVER_HOLD_DURATION,
-        duration: 0.7, // Duração da animação de deslize da capa
+        duration: 0.7,
         ease: "easeInOut",
       },
     },
@@ -39,18 +32,16 @@ const RevealWrapper = ({ children }) => {
 
   return (
     <motion.div
-      // Não precisamos mais do 'ref' do useInView
       initial="hidden"
       animate={controls}
       variants={wrapperVariants}
-      className="reveal-wrapper" // CSS: position: relative; overflow: hidden;
+      className="reveal-wrapper"
     >
       <motion.div
-        className="reveal-cover" // CSS: position: absolute; ..., z-index: 2;
+        className="reveal-cover" 
         variants={coverVariants}
-        // initial/animate são herdados do motion.div pai
       />
-      <div className="reveal-content" /* CSS: z-index: 1; */ >
+      <div className="reveal-content" >
         {children}
       </div>
     </motion.div>

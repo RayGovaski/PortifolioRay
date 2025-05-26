@@ -1,0 +1,42 @@
+.Button-tamanho{
+  width: 60rem;
+  margin-left: 30px;
+  margin-top: 80px;
+  font-size: 25px;
+}
+
+@media (max-width: 1040px) {
+ .Button-tamanho{
+  width: 50rem;
+}
+}
+
+@media (max-width: 886px) {
+ .Button-tamanho{
+  width: 40rem;
+}
+}
+
+@media (max-width: 705px) {
+ .Button-tamanho{
+  width: 35rem;
+}
+}
+
+@media (max-width: 645px) {
+ .Button-tamanho{
+  width: 30rem;
+}
+}
+
+@media (max-width: 535px) {
+ .Button-tamanho{
+  width: 25rem;
+}
+}
+
+@media (max-width: 455px) {
+ .Button-tamanho{
+  width: 22rem;
+}
+}

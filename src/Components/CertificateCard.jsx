@@ -1,61 +1,57 @@
-// src/components/CertificateCard/CertificateCard.jsx
-import './CertificateCard.css';
 import React from 'react';
-import PropTypes from 'prop-types';
-import RevealWrapper from './RevealWrapper'; // ajuste o path se necessário
-import Cortina from '../components/Cortina'; // Ajuste o caminho se necessário
+import './CertificateCard.css';
+import Cortina from './Cortina';
+import RevealWrapper from './RevealWrapper';
 
-
-const CertificateCard = ({ title, imageUrl, certificateLink }) => {
-  const handleClick = () => {
+const CertificateCard = ({
+  imageUrl,
+  certificateName,
+  description,
+  altText,
+  certificateLink
+}) => {
+  const handleCardClick = () => {
     if (certificateLink) {
-      window.open(certificateLink, '_blank', 'noopener,noreferrer');
+      window.open(certificateLink, '_blank');
     }
   };
 
   return (
-  <Cortina>
-      <div className="certificate-card-wrapper">
+    <RevealWrapper>
       <div 
-        className={`certificate-card ${certificateLink ? 'clickable' : ''}`}
-        onClick={handleClick}
-        role={certificateLink ? 'button' : undefined}
-        tabIndex={certificateLink ? 0 : undefined}
-        onKeyDown={(e) => {
-          if (certificateLink && (e.key === 'Enter' || e.key === ' ')) {
-            e.preventDefault();
-            handleClick();
-          }
-        }}
-      >
-        <div className="certificate-image-container">
+      className={`certificate-card ${certificateLink ? 'certificate-card-clickable' : ''}`}
+      onClick={handleCardClick}
+      style={{ cursor: certificateLink ? 'pointer' : 'default' }}
+    >
+      {imageUrl && (
+        <div className="certificate-card-image-container">
           <img 
             src={imageUrl} 
-            className="certificate-image" 
-            alt={title}
-            loading="lazy"
+            alt={altText || certificateName || 'Certificado'} 
+            className="certificate-card-image" 
           />
         </div>
-        <div className="certificate-content">
-          <h3 className="certificate-title">{title}</h3>
-          {certificateLink && (
-            <span className="certificate-link-indicator">
-              Clique para ver certificado
-            </span>
-          )}
-        </div>
+      )}
+      
+      <div className="certificate-card-content">
+        {certificateName && (
+          <h3 className="certificate-card-title">{certificateName}</h3>
+        )}
+        
+        {description && (
+          <p className="certificate-card-description">{description}</p>
+        )}
+        
+        {certificateLink && (
+          <div className="certificate-card-link-indicator">
+            
+          </div>
+        )}
       </div>
     </div>
-  </Cortina>
-    
-    
+    </RevealWrapper>
+         
   );
-};
-
-CertificateCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  certificateLink: PropTypes.string,
 };
 
 export default CertificateCard;
