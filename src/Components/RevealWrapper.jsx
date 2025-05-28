@@ -4,7 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 import './RevealWrapper.css';
 
 const INITIAL_PAGE_LOAD_DELAY = 0.1;
-const COVER_HOLD_DURATION = 2.0;
+const COVER_HOLD_DURATION = 2;
 
 const RevealWrapper = ({ children }) => {
   const controls = useAnimation();

@@ -4,7 +4,7 @@ import PageWrapper from "../../Components/PageWrapper/PageWrapper";
 
 const Sobre = () => {
   return (
-    <PageWrapper>
+    <PageWrapper show={true}>
       <div className="min-h-screen bg-stone-100 p-4 md:p-8 flex items-center justify-center font-mono">
       <div className="max-w-6xl w-full bg-stone-100 p-4 md:p-6 rounded-lg shadow-sm">
         <div className="grid-container">
@@ -56,3 +56,4 @@ const Sobre = () => {
 };
 
 export default Sobre;
+

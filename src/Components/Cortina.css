@@ -1,14 +1,14 @@
 .cortina-involucro {
   position: relative;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 23px;
 }
 
 .cortina-capa {
   position: absolute;
   top: 0;
   left: 0;
-  height: 90%;
+  height: 100%;
   width: 100%;
   background-color: #1b1b1b;
   z-index: 2;

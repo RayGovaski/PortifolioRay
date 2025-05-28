@@ -57,7 +57,7 @@ export default function Carreira() {
   };
 
   return (
-    <PageWrapper>
+    <PageWrapper show={true}>
       <>
        <div className="curriculo-container">
         <div className="pdf-button-container">

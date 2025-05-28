@@ -1,4 +1,3 @@
-// ProjectCard.jsx
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import './ProjectCard.css';
@@ -13,7 +12,7 @@ const ProjectCard = ({
 }) => {
   return (
     <Cortina>
-       <article className="project-card">
+      <article className="project-card">
       {imageUrl && ( 
         <div className="project-card-image-container">
           <img 
@@ -39,6 +38,7 @@ const ProjectCard = ({
       </div>
     </article>  
     </Cortina>
+       
       
   );
 };

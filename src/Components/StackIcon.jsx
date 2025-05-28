@@ -1,6 +1,6 @@
 import React from 'react';
 import './StackIcon.css';
-import Cortina from './Cortina';
+import RevealWrapper from './RevealWrapper';
 
 const StackIcon = ({ 
   iconUrl, 
@@ -8,7 +8,7 @@ const StackIcon = ({
   altText 
 }) => {
   return (
-    <Cortina>
+    <RevealWrapper>
       <div className="stack-icon">
             <div className="stack-icon-image-container">
               <img 
@@ -22,7 +22,10 @@ const StackIcon = ({
               <span className="stack-icon-name">{techName}</span>
             )}
           </div>
-    </Cortina>
+    </RevealWrapper>
+    
+      
+
     
   );
 };

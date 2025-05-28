@@ -1,13 +1,18 @@
 // ProjetosPage.jsx
 import React, { useState } from 'react';
 import { FolderOpen } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import TabButton from '../../components/TabButton';
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
 import ProjectCard from '../../components/ProjectCard';
 import CertificateCard from '../../components/CertificateCard';
 import StackIcon from '../../Components/StackIcon';
 
-import projectImg1 from '../../assets/certificates/certificate1.jpg';
+import projectImg1 from '../../assets/project-images/project1.jpg'; 
+import projectImg2 from '../../assets/project-images/project1.jpg'; 
+import projectImg3 from '../../assets/project-images/project1.jpg'; 
+import projectImg4 from '../../assets/project-images/project1.jpg'; 
+
 
 import certImg1 from '../../assets/certificates/certificate1.jpg';
 
@@ -15,75 +20,27 @@ import './Button.css';
 
 const Projetos = () => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handleTabChange = (index) => {
     setActiveTabIndex(index);
   };
 
   const pageTitle = "Meus Projetos";
-
   const tabItems = ['Projetos', 'Certificados', 'Stacks'];
 
   const projectsData = [
-    {
-      id: 1,
-      title: 'E-commerce de Roupas',
-      description: 'Projeto de e-commerce completo com funcionalidades de carrinho, checkout e autenticação de usuário.',
-      imageUrl: projectImg1,
-      projectLink: 'https://seusite.com/ecommerce',
-      repoLink: 'https://github.com/seuuser/ecommerce-repo',
-    },
-    {
-      id: 2,
-      title: 'Plataforma de Receitas',
-      description: 'Aplicação web para gerenciar e compartilhar receitas culinárias, com busca e favoritos.',
-      imageUrl: projectImg1,
-      projectLink: 'https://seusite.com/receitas',
-      repoLink: 'https://github.com/seuuser/receitas-repo',
-    },
-    {
-      id: 3,
-      title: 'Dashboard Analytics',
-      description: 'Dashboard interativo para visualização de dados com gráficos e relatórios em tempo real.',
-      imageUrl: projectImg1,
-      projectLink: 'https://seusite.com/dashboard',
-      repoLink: 'https://github.com/seuuser/dashboard-repo',
-    },
-    {
-      id: 4,
-      title: 'Sistema de Gestão',
-      description: 'Sistema completo de gestão empresarial com módulos de vendas, estoque e relatórios.',
-      imageUrl: projectImg1,
-      projectLink: 'https://seusite.com/gestao',
-      repoLink: 'https://github.com/seuuser/gestao-repo',
-    },
+    { id: 1, title: 'E-commerce de Roupas', description: 'Projeto de e-commerce completo com funcionalidades de carrinho, checkout e autenticação.', imageUrl: projectImg1 },
+    { id: 2, title: 'Plataforma de Receitas', description: 'Aplicação web para gerenciar e compartilhar receitas culinárias, com busca e favoritos.', imageUrl: projectImg2 },
+    { id: 3, title: 'Dashboard Analytics', description: 'Dashboard interativo para visualização de dados com gráficos e relatórios em tempo real.', imageUrl: projectImg3 },
+    { id: 4, title: 'Sistema de Gestão', description: 'Sistema completo de gestão empresarial com módulos de vendas, estoque e relatórios.', imageUrl: projectImg4 },
   ];
 
   const certificatesData = [
-    {
-      id: 1,
-      title: 'React Avançado - Alura',
-      imageUrl: certImg1,
-      certificateLink: 'https://cursos.alura.com.br/certificate/seu-react-cert',
-    },
-    {
-      id: 2,
-      title: 'JavaScript Avançado - Udemy',
-      imageUrl: certImg1,
-      certificateLink: 'https://www.udemy.com/certificate/seu-js-cert',
-    },
-    {
-      id: 3,
-      title: 'HTML & CSS Fundamentos',
-      imageUrl: certImg1,
-      certificateLink: 'https://cursos.alura.com.br/certificate/seu-htmlcss-cert',
-    },
-    {
-      id: 4,
-      title: 'Bootstrap 5 - Desenvolve',
-      imageUrl: certImg1,
-      certificateLink: 'https://cursos.alura.com.br/certificate/seu-htmlcss-cert',
-    },
+    { id: 1, title: 'React Avançado - Alura', imageUrl: certImg1, certificateLink: 'https://cursos.alura.com.br/certificate/seu-react-cert' },
+    { id: 2, title: 'JavaScript Avançado - Udemy', imageUrl: certImg1, certificateLink: 'https://www.udemy.com/certificate/seu-js-cert' },
+    { id: 3, title: 'HTML & CSS Fundamentos', imageUrl: certImg1, certificateLink: 'https://cursos.alura.com.br/certificate/seu-htmlcss-cert' },
+    { id: 4, title: 'Bootstrap 5 - Desenvolve', imageUrl: certImg1, certificateLink: 'https://cursos.alura.com.br/certificate/seu-htmlcss-cert' },
   ];
 
   const stacksData = [
@@ -107,36 +64,40 @@ const Projetos = () => {
     switch (activeTabIndex) {
       case 0:
         return (
-          <div className="content-section">
-            <PageWrapper key="page-wrapper-projetos">
-              {projectsData.map(project => (
-                <ProjectCard
-                  key={project.id}
-                  imageUrl={project.imageUrl}
-                  title={project.title}
-                  description={project.description}
-                  onViewMore={() => {
-                    if (project.projectLink) {
-                      window.open(project.projectLink, '_blank', 'noopener,noreferrer');
-                    } else {
-                      alert(`Ver mais detalhes do projeto: ${project.title}`);
-                    }
-                  }}
-                />
-              ))}
+          <div className="content-section aaa" style={{ height: '100%' }}>
+            <PageWrapper show={true} key="page-wrapper-projetos">
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '16px',
+                padding: '20px',
+                justifyContent: 'center'
+              }}>
+                {projectsData.map(project => (
+                  <ProjectCard
+                    key={project.id}
+                    imageUrl={project.imageUrl}
+                    title={project.title}
+                    description={project.description}
+                    onViewMore={() => {
+                      navigate(`/projeto/${project.id}`);
+                    }}
+                  />
+                ))}
+              </div>
             </PageWrapper>
           </div>
         );
 
-      case 1:
+      case 1: // Certificados
         return (
-          <div className="content-section">
-            <PageWrapper key="page-wrapper-certificados">
+          <div className="content-section" style={{ height: '100%' }}>
+            <PageWrapper show={true} key="page-wrapper-certificados">
               <div className="certificates-container" style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
                 gap: '16px',
-                padding: '0 20px',
+                padding: '20px',
                 justifyItems: 'center'
               }}>
                 {certificatesData.map(cert => (
@@ -154,16 +115,16 @@ const Projetos = () => {
           </div>
         );
 
-      case 2:
+      case 2: // Stacks
         return (
-          <div className="content-section">
-            <PageWrapper key="page-wrapper-stacks">
+          <div className="content-section" style={{ height: '100%' }}>
+            <PageWrapper show={true} key="page-wrapper-stacks">
               <div className="stacks-container" style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 justifyContent: 'center',
                 alignItems: 'flex-start',
-                gap: '8px',
+                gap: '16px',
                 padding: '20px',
                 maxWidth: '800px',
                 margin: '0 auto'
@@ -187,20 +148,31 @@ const Projetos = () => {
   };
 
   return (
-    <div>
-      <p className='Button-tamanho'>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
+      padding: '20px'
+    }}>
+      <p className='Button-tamanho' style={{ flexShrink: 0, marginBottom: '20px' }}>
         {pageTitle}
         {' '}
         <FolderOpen size={25} style={{ marginRight: '10px', verticalAlign: 'middle' }} />
       </p>
 
-      <TabButton
-        tabs={tabItems}
-        onTabChange={handleTabChange}
-        defaultTab={0}
-      />
+      <div style={{ flexShrink: 0, marginBottom: '20px' }}>
+        <TabButton
+          tabs={tabItems}
+          onTabChange={handleTabChange}
+          defaultTab={0}
+        />
+      </div>
 
-      <div className="tab-content-display" style={{ marginTop: '30px' }}>
+      <div className="tab-content-display" style={{
+        position: 'relative',
+        flex: 1,
+        overflow: 'hidden'
+      }}>
         {renderTabContent()}
       </div>
     </div>

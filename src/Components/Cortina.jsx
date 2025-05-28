@@ -4,7 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 import './Cortina.css';
 
 const INITIAL_PAGE_LOAD_DELAY = 0.1;
-const COVER_HOLD_DURATION = 2.0;
+const COVER_HOLD_DURATION = 2.5;
 
 const Cortina = ({ children }) => {
   const controls = useAnimation();
