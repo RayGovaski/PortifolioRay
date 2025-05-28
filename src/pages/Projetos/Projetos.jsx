@@ -1,4 +1,3 @@
-// ProjetosPage.jsx
 import React, { useState } from 'react';
 import { FolderOpen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -7,20 +6,27 @@ import PageWrapper from "../../Components/PageWrapper/PageWrapper";
 import ProjectCard from '../../components/ProjectCard';
 import CertificateCard from '../../components/CertificateCard';
 import StackIcon from '../../Components/StackIcon';
+import CertificateModal from '../../Components/CertificateModal';
 
-import projectImg1 from '../../assets/project-images/project1.jpg'; 
-import projectImg2 from '../../assets/project-images/project1.jpg'; 
-import projectImg3 from '../../assets/project-images/project1.jpg'; 
-import projectImg4 from '../../assets/project-images/project1.jpg'; 
-
+import projectImg1 from '../../assets/project-images/project1.jpg';
+import projectImg2 from '../../assets/project-images/project1.jpg';
+import projectImg3 from '../../assets/project-images/project1.jpg';
+import projectImg4 from '../../assets/project-images/project1.jpg';
 
 import certImg1 from '../../assets/certificates/certificate1.jpg';
+// Add more certificate images if needed or use a generic one
+// import certImgGeneric from '../../assets/certificates/generic-cert.png';
+
 
 import './Button.css';
 
 const Projetos = () => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const navigate = useNavigate();
+
+  // State for Modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
 
   const handleTabChange = (index) => {
     setActiveTabIndex(index);
@@ -37,10 +43,35 @@ const Projetos = () => {
   ];
 
   const certificatesData = [
-    { id: 1, title: 'React Avançado - Alura', imageUrl: certImg1, certificateLink: 'https://cursos.alura.com.br/certificate/seu-react-cert' },
-    { id: 2, title: 'JavaScript Avançado - Udemy', imageUrl: certImg1, certificateLink: 'https://www.udemy.com/certificate/seu-js-cert' },
-    { id: 3, title: 'HTML & CSS Fundamentos', imageUrl: certImg1, certificateLink: 'https://cursos.alura.com.br/certificate/seu-htmlcss-cert' },
-    { id: 4, title: 'Bootstrap 5 - Desenvolve', imageUrl: certImg1, certificateLink: 'https://cursos.alura.com.br/certificate/seu-htmlcss-cert' },
+    {
+      id: 1,
+      title: 'React Avançado - Alura',
+      imageUrl: certImg1, // Make sure this image path is correct
+      // Add a more detailed description for the modal if you want
+      modalDescription: 'Certificado de conclusão do curso de React Avançado na Alura, cobrindo tópicos como hooks avançados, performance e testes.',
+      certificateLink: 'https://cursos.alura.com.br/certificate/seu-react-cert'
+    },
+    {
+      id: 2,
+      title: 'JavaScript Avançado - Udemy',
+      imageUrl: certImg1, // Replace with actual image if different
+      modalDescription: 'Curso focado em aprofundar conhecimentos em JavaScript, incluindo ES6+, programação assíncrona e padrões de projeto.',
+      certificateLink: 'https://www.udemy.com/certificate/seu-js-cert'
+    },
+    {
+      id: 3,
+      title: 'HTML & CSS Fundamentos',
+      imageUrl: certImg1, // Replace with actual image
+      modalDescription: 'Fundamentos de HTML5 e CSS3 para construção de interfaces web responsivas e semânticas.',
+      certificateLink: 'https://cursos.alura.com.br/certificate/seu-htmlcss-cert'
+    },
+    {
+      id: 4,
+      title: 'Bootstrap 5 - Desenvolve',
+      imageUrl: certImg1, // Replace with actual image
+      modalDescription: 'Desenvolvimento ágil de interfaces responsivas utilizando o framework Bootstrap 5.',
+      certificateLink: null // Example of a certificate without a link
+    },
   ];
 
   const stacksData = [
@@ -60,9 +91,21 @@ const Projetos = () => {
     { id: 14, name: 'Photoshop', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg' },
   ];
 
+
+  const handleOpenCertificateModal = (certificate) => {
+    setSelectedCertificate(certificate);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedCertificate(null);
+  };
+
+
   const renderTabContent = () => {
     switch (activeTabIndex) {
-      case 0:
+      case 0: // Projetos
         return (
           <div className="content-section aaa" style={{ height: '100%' }}>
             <PageWrapper show={true} key="page-wrapper-projetos">
@@ -105,9 +148,11 @@ const Projetos = () => {
                     key={cert.id}
                     imageUrl={cert.imageUrl}
                     certificateName={cert.title}
-                    description={cert.certificateLink ? 'Certificado verificado' : 'Certificado concluído'}
+                    // The description on the card can be short
+                    description={cert.certificateLink ? 'Verificado' : 'Concluído'}
                     altText={`Certificado ${cert.title}`}
-                    certificateLink={cert.certificateLink}
+                    certificateLink={cert.certificateLink} // Still useful for the modal logic
+                    onCardClick={() => handleOpenCertificateModal(cert)} // Pass the handler
                   />
                 ))}
               </div>
@@ -171,10 +216,23 @@ const Projetos = () => {
       <div className="tab-content-display" style={{
         position: 'relative',
         flex: 1,
-        overflow: 'hidden'
+        overflow: 'hidden' // Be careful if modal needs to break out
       }}>
         {renderTabContent()}
       </div>
+
+      {/* Render the Modal */}
+      {selectedCertificate && (
+        <CertificateModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          imageUrl={selectedCertificate.imageUrl}
+          certificateName={selectedCertificate.title}
+          // Use a more detailed description for the modal if available
+          description={selectedCertificate.modalDescription || `Certificado de ${selectedCertificate.title}.`}
+          certificateLink={selectedCertificate.certificateLink}
+        />
+      )}
     </div>
   );
 };
