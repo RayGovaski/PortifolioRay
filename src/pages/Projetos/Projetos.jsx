@@ -149,7 +149,7 @@ const Projetos = () => {
                     imageUrl={cert.imageUrl}
                     certificateName={cert.title}
                     // The description on the card can be short
-                    description={cert.certificateLink ? 'Verificado' : 'Concluído'}
+                    description={cert.certificateLink ? 'Ver sobre' : 'Ver sobre'}
                     altText={`Certificado ${cert.title}`}
                     certificateLink={cert.certificateLink} // Still useful for the modal logic
                     onCardClick={() => handleOpenCertificateModal(cert)} // Pass the handler

@@ -158,6 +158,7 @@ body, html {
   .character-image {
     max-width: 280px;
     max-height: 60vh;
+    margin-top: 3.5rem;
   }
   
   .social-icons {
