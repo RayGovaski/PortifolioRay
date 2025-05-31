@@ -1,23 +1,50 @@
-// Em Home.js (e em outra página de teste)
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
-import './Home.css';
-import PageWrapper from "../../Components/PageWrapper/PageWrapper"; // COMENTE OU REMOVA
+import './Home.css'; // Certifique-se que os novos estilos estarão aqui ou em um CSS acessível
+import PageWrapper from "../../Components/PageWrapper/PageWrapper";
+
 
 const Home = () => {
   const characterImg = "src/assets/Boneco.png";
+
   const roles = ["Front-end", "Back-end", "Web"];
-  const [roleIndex] = useState(0);
-  const [displayText] = useState("");
-  const [isDeleting] = useState(false);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    let timeout;
+    const typingSpeed = 150;
+    const deletingSpeed = 100;
+    const pauseBetweenWords = 1000;
+    const currentRole = roles[roleIndex];
+
+    if (isDeleting) {
+      if (displayText === "") {
+        setIsDeleting(false);
+        setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+      } else {
+        timeout = setTimeout(() => {
+          setDisplayText(currentRole.substring(0, displayText.length - 1));
+        }, deletingSpeed);
+      }
+    } else {
+      if (displayText === currentRole) {
+        timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, pauseBetweenWords);
+      } else {
+        timeout = setTimeout(() => {
+          setDisplayText(currentRole.substring(0, displayText.length + 1));
+        }, typingSpeed);
+      }
+    }
+    return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex, roles]);
 
   return (
-    <>
-      <PageWrapper show={true}>
-        <div className="home-container">
+    <> 
+        <div className="home-container"> {/* Este é o seu conteúdo principal da Home */}
           <div className="home-content">
             <div className="home-text">
               <h1 className="home-title">
@@ -50,8 +77,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </PageWrapper>
-      
     </>
   );
 };
