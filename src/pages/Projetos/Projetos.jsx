@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { FolderOpen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import TabButton from '../../components/TabButton';
+import TabButton from '../../Components/TabButton';
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
-import ProjectCard from '../../components/ProjectCard';
-import CertificateCard from '../../components/CertificateCard';
+import ProjectCard from '../../Components/ProjectCard';
+import CertificateCard from '../../Components/CertificateCard';
 import StackIcon from '../../Components/StackIcon';
 import CertificateModal from '../../Components/CertificateModal';
-import Footer from '../../Components/layout/Footer';
 
 import projectImg1 from '../../assets/project-images/project1.jpg';
 import projectImg2 from '../../assets/project-images/project1.jpg';
