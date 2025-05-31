@@ -5,6 +5,8 @@ import { projetosData } from '../../data/projetosData';
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
 import './ProjetoDetalhes.css';
 import Cortina from '../../components/Cortina'; 
+import Footer from '../../Components/layout/Footer';
+
 
 const ProjetoDetalhes = () => {
   const { id } = useParams();

@@ -39,6 +39,7 @@ const PageWrapper = ({ children, show }) => {
           overflowY: 'auto',
           transformStyle: 'preserve-3d',
           perspective: '1000px',
+          
         }}
       >
         {children}
