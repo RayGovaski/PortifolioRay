@@ -4,8 +4,7 @@ import { ArrowLeft, ExternalLink, Github, Calendar, Code, BookOpen } from 'lucid
 import { projetosData } from '../../data/projetosData';
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
 import './ProjetoDetalhes.css';
-import Cortina from '../../components/Cortina'; 
-import Footer from '../../Components/layout/Footer';
+import Cortina from '../../Components/Cortina';
 
 
 const ProjetoDetalhes = () => {
