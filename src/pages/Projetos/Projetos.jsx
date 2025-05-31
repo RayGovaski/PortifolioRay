@@ -15,7 +15,7 @@ import projectImg4 from '../../assets/project-images/project1.jpg';
 
 import certImg1 from '../../assets/certificates/certificate1.jpg';
 
-import './Button.css';
+import './button.css';
 
 const Projetos = () => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
