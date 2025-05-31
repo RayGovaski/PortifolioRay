@@ -1,7 +1,6 @@
 import React from 'react';
 import './Sobre.css';
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
-import Footer from '../../Components/layout/Footer'; // O IMPORTE DO FOOTER CONTINUA NECESSÁRIO
 
 const Sobre = () => {
   return (

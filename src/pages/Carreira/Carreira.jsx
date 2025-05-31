@@ -2,7 +2,7 @@ import React from 'react';
 import { FiBriefcase, FiBookOpen, FiTarget, FiAward, FiGlobe, FiSettings, FiDownload } from 'react-icons/fi';
 import PageWrapper from "../../Components/PageWrapper/PageWrapper";
 import './Carreira.css';
-import Footer from '../../Components/layout/Footer'; // IMPORTE O FOOTER
+
 
 
 const resumo = "Sou estudante de Sistemas de Informação, atualmente cursando o 5º período na PUCPR. Além disso, atuo como diretor de mídias sociais do Centro Acadêmico do meu curso, onde desenvolvo habilidades em gestão de comunicação, organização, trabalho em equipe e design de produtos.\n\nMinha trajetória profissional inclui experiência como designer gráfico em uma gráfica, onde aprimorei minhas habilidades em criação visual, utilizando Photoshop e CorelDRAW, design de materiais, atendimento ao público e gerenciamento de pedidos. Com o tempo, meu interesse por tecnologia cresceu, especialmente por sempre ter sido apaixonado por jogos. Foi assim que descobri a área de desenvolvimento de software, que hoje é o meu foco, tanto no front-end quanto no back-end.\n\nTenho experiência em desenvolvimento web completo, utilizando React, Bootstrap, HTML, CSS e JavaScript. Em projetos universitários, costumo assumir a responsabilidade pelo desenvolvimento front-end e também tenho familiaridade com outras tecnologias para tornar as soluções mais completas e eficientes.";
